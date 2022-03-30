@@ -1,0 +1,44 @@
+---
+- name: create users and groups for {{ role }}
+  debug:
+    msg: This playbook created the {{ role }} users and groups
+
+- name: setup Test environment users
+  block:
+
+    - name: add the {{ role }} groups for {{ role }} role
+      group:
+        name: "{{ item.name }}"
+        gid: "{{ item.gid }}"
+        state: "{{ item.state }}"
+      loop: "{{ td.groupinfo }}"
+
+    - name: add the {{ role }} users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        group: "{{ item.group }}"
+        shell: "{{ item.shell }}"
+      loop: "{{ td.users }}"
+
+  when: env == "t"
+
+- name: setup production environment users for {{ role }} role
+  block:
+
+    - name: add the {{ role }} groups
+      group:
+        name: "{{ item.name }}"
+        gid: "{{ item.gid }}"
+        state: "{{ item.state }}"
+      loop: "{{ td.groupinfo }}"
+
+    - name: add the {{ role }} users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        group: "{{ item.group }}"
+        shell: "{{ item.shell }}"
+      loop: "{{ td.users }}"
+
+  when: env == "p"

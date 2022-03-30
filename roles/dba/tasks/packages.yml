@@ -1,0 +1,6 @@
+---
+- name: install {{ role }} packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"

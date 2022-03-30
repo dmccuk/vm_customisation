@@ -1,0 +1,18 @@
+---
+packages:
+    - httpd
+    - telnet
+
+td:
+  groupinfo:
+    - { name: webgroup, gid: 1002, state: present }
+
+  users:
+    - { name: webuser, uid: 1002, group: webgroup, shell: /bin/bash }
+
+prod:
+  groupinfo:
+    - { name: webgroup, gid: 2002, state: present }
+
+  users:
+    - { name: webuser, uid: 2002, group: webgroup, shell: /bin/bash }

@@ -1,0 +1,22 @@
+---
+
+# sudoers rules
+# groups
+# users
+# directories and permissions
+# cron allow users
+# make it work with different environments
+
+td:
+  groupinfo:
+    - { name: commongroup, gid: 1001, state: present }
+
+  users:
+    - { name: commonuser, uid: 1001, group: commongroup, shell: /bin/bash }
+
+prod:
+  groupinfo:
+    - { name: commongroup, gid: 2001, state: present }
+
+  users:
+    - { name: commonuser, uid: 2001, group: commongroup, shell: /bin/bash }

@@ -1,0 +1,18 @@
+---
+
+packages:
+    - mysql
+
+td:
+  groupinfo:
+    - { name: dbagroup, gid: 1003, state: present }
+
+  users:
+    - { name: dbauser, uid: 1003, group: dbagroup, shell: /bin/bash }
+
+prod:
+  groupinfo:
+    - { name: dbagroup, gid: 2003, state: present }
+
+  users:
+    - { name: dbauser, uid: 2003, group: dbagroup, shell: /bin/bash }

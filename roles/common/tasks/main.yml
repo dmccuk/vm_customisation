@@ -1,0 +1,39 @@
+---
+- name: include the common variables
+  include_vars:
+    file: group_vars/common
+
+- name: set the facts we need
+  set_fact:
+    env:  "{{ inventory_hostname[4] }}"
+    role: "{{ inventory_hostname[7:10] }}"
+    zone: "{{ inventory_hostname[5] }}"
+
+- name: debug
+  debug:
+    msg: "env: {{ env }}, role: {{ role }}, zone: {{ zone }}"
+
+- name: ---------- COMMON TASKS ----------
+  include_tasks: "{{ common_tasks }}"
+  loop:
+    - users.yml
+  loop_control:
+    loop_var: common_tasks
+
+- name: register if the role exist
+  stat:
+    path: "{{ lookup('env','PWD') }}/roles/{{ role }}"
+  register: role_dir
+  delegate_to: localhost
+  become: false
+
+- name: ---------- {{ role }} specific tasks ----------
+  include_role:
+    name: "{{ role }}"
+  when: role_dir.stat.exists and role_dir.stat.isdir
+
+- name: no role found message
+  debug:
+    msg: The role directory does not exists. No role customisation has been performed.
+  when: role_dir.stat.exists == false
+

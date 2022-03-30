@@ -1,0 +1,12 @@
+---
+- name: include {{ role }} variables
+  include_vars:
+    file: group_vars/web
+
+- name: include {{ role }} tasks
+  include_tasks: "{{ web_tasks }}"
+  loop:
+    - users.yml
+    - packages.yml
+  loop_control:
+    loop_var: web_tasks

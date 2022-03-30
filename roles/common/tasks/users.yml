@@ -1,0 +1,44 @@
+---
+- name: create common users
+  debug:
+    msg: This playbook created the common users and groups
+
+- name: setup Test users
+  block:
+
+    - name: add the common groups
+      group:
+        name: "{{ item.name }}"
+        gid: "{{ item.gid }}"
+        state: "{{ item.state }}"
+      loop: "{{ td.groupinfo }}"
+
+    - name: add the common users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        group: "{{ item.group }}"
+        shell: "{{ item.shell }}"
+      loop: "{{ td.users }}"
+
+  when: env == "t"
+
+- name: setup production users
+  block:
+
+    - name: add the common groups
+      group:
+        name: "{{ item.name }}"
+        gid: "{{ item.gid }}"
+        state: "{{ item.state }}"
+      loop: "{{ td.groupinfo }}"
+
+    - name: add the common users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        group: "{{ item.group }}"
+        shell: "{{ item.shell }}"
+      loop: "{{ td.users }}"
+
+  when: env == "p"
