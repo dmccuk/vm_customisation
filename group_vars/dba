@@ -1,8 +1,13 @@
 ---
-
+# Apply to all
 packages:
     - mysql
 
+dirs:
+    - { path: /data, owner: root, group: root, perms: 0755 }
+    - { path: /data/oracle, owner: dbauser, group: dbagroup, perms: 0755 }
+
+# Test variables
 td:
   groupinfo:
     - { name: dbagroup, gid: 1003, state: present }
@@ -10,6 +15,7 @@ td:
   users:
     - { name: dbauser, uid: 1003, group: dbagroup, shell: /bin/bash }
 
+# production variables
 prod:
   groupinfo:
     - { name: dbagroup, gid: 2003, state: present }

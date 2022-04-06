@@ -1,15 +1,24 @@
 ---
+# Apply to all
 packages:
     - httpd
     - telnet
 
+dirs:
+    - 
+# Test variables
 td:
   groupinfo:
     - { name: webgroup, gid: 1002, state: present }
 
   users:
     - { name: webuser, uid: 1002, group: webgroup, shell: /bin/bash }
+    # Check the user that https adds?
 
+  sudoers:
+    # Check sudo rules - allow webuser to become tomcat/apache user?
+
+# production variables
 prod:
   groupinfo:
     - { name: webgroup, gid: 2002, state: present }
