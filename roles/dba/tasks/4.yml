@@ -1,4 +1,4 @@
 ---
-- name: "{{ env | upper }} file for {{ role | upper }}"
+- name: "{{ zone | upper }} file for {{ role | upper }}"
   debug:
     msg: tasks
