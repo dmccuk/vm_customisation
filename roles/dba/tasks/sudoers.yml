@@ -1,0 +1,10 @@
+---
+- name: Add users to sudo
+  lineinfile:
+    path: /etc/sudoers.d/"{{ item.name }}"
+    line: "{{ item.line }}"
+    state: present
+    mode: 0440
+    create: yes
+    validate: 'visudo -cf %s'
+  loop: "{{ sudoers }}"

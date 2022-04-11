@@ -7,6 +7,15 @@ dirs:
     - { path: /data, owner: root, group: root, perms: 0755 }
     - { path: /data/oracle, owner: dbauser, group: dbagroup, perms: 0755 }
 
+ulimits:
+    - { domain: dbauser, type: soft, item: nofile, value: 65536 }
+    - { domain: dbauser, type: hard, item: nofile, value: 65536 }
+    - { domain: dbauser, type: soft, item: nproc, value: 16384 }
+    - { domain: dbauser, type: hard, item: nproc, value: 16384 }
+
+sudoers:
+    - { name: 10_dbauser, line: 'dbauser ALL=NOPASSWD: /sbin/ifconfig, /sbin/arping' }
+
 # Test variables
 td:
   groupinfo:
