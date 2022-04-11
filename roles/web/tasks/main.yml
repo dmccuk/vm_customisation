@@ -1,7 +1,7 @@
 ---
 - name: include {{ role }} variables
   include_vars:
-    file: group_vars/web
+    file: "group_vars/{{ role }}"
 
 - name: include {{ role }} tasks
   include_tasks: "{{ web_tasks }}"
@@ -10,3 +10,12 @@
     - packages.yml
   loop_control:
     loop_var: web_tasks
+
+
+- name: include {{ role }} specific Environment playbooks
+  include_tasks: "{{ env_zone }}"
+  loop:
+    - "{{ env }}.yml"
+    - "{{ zone }}.yml"
+  loop_control:
+    loop_var: env_zone

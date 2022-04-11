@@ -10,3 +10,11 @@
     - packages.yml
   loop_control:
     loop_var: dba_tasks
+
+- name: include {{ role }} specific Environment playbooks
+  include_tasks: "{{ env_zone }}"
+  loop:
+    - "{{ env }}.yml"
+    - "{{ zone }}.yml"
+  loop_control:
+    loop_var: env_zone
