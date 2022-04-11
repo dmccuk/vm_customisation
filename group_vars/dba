@@ -7,6 +7,10 @@ dirs:
     - { path: /data, owner: root, group: root, perms: 0755 }
     - { path: /data/oracle, owner: dbauser, group: dbagroup, perms: 0755 }
 
+t_dirs:
+    - { path: /data/TEST, owner: dbauser, group: dbagroup, perms: 0755 }
+    - { path: /data/TEST/IN, owner: dbauser, group: dbagroup, perms: 0777 }
+
 ulimits:
     - { domain: dbauser, type: soft, item: nofile, value: 65536 }
     - { domain: dbauser, type: hard, item: nofile, value: 65536 }
@@ -15,6 +19,11 @@ ulimits:
 
 sudoers:
     - { name: 10_dbauser, line: 'dbauser ALL=NOPASSWD: /sbin/ifconfig, /sbin/arping' }
+
+sysctl:
+    - { name: fs.file-max, value: '65536' }
+    - { name: kernel.shmmni, value: '4096' }
+    - { name: kernel.sem, value: '256 32000 100 142' }
 
 # Test variables
 td:

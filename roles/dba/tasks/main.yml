@@ -9,6 +9,7 @@
     - users.yml
     - sudoers.yml
     - packages.yml
+    - dirs.yml
     - limits.yml
   loop_control:
     loop_var: dba_tasks

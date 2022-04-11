@@ -2,3 +2,12 @@
 - name: "{{ env | upper }} file for {{ role | upper }}"
   debug:
     msg: tasks
+
+- name: Create DBA directories
+  file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.perms }}"
+  loop: "{{ t_dirs }}"
