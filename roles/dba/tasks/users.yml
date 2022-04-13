@@ -31,7 +31,7 @@
         name: "{{ item.name }}"
         gid: "{{ item.gid }}"
         state: "{{ item.state }}"
-      loop: "{{ td.groupinfo }}"
+      loop: "{{ prod.groupinfo }}"
 
     - name: add the {{ role }} users
       user:
@@ -39,6 +39,6 @@
         uid: "{{ item.uid }}"
         group: "{{ item.group }}"
         shell: "{{ item.shell }}"
-      loop: "{{ td.users }}"
+      loop: "{{ prod.users }}"
 
   when: env == "p"
