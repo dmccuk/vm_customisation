@@ -1,6 +1,8 @@
 ---
 - name: deploy custom configuration
-  hosts: "{{ group }}"
+#  hosts: "{{ group }}"
+  hosts: all
+  become: true
   tasks:
   - include_role:
       name: common
