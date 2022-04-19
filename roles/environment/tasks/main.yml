@@ -1,0 +1,19 @@
+---
+# tasks file for environment
+- name: include the common variables
+  include_vars:
+    file: group_vars/environment
+
+- name: set the facts we need
+  set_fact:
+    env:  "{{ inventory_hostname[4] }}"
+    role: "{{ inventory_hostname[7:10] }}"
+    zone: "{{ inventory_hostname[5] }}"
+
+- name: add environment file
+  template:
+    src: templates/environment.j2
+    dest: /tmp/environment.txt
+    mode: 0755
+
+
