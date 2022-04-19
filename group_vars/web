@@ -6,7 +6,7 @@ packages:
 
 dirs:
     - { path: /data, owner: root, group: root, perms: '0755' }
-    - { path: /data/web, owner: apache, group: apache, perms: '0755' }
+    - { path: /data/web, owner: webuser, group: webgroup, perms: '0755' }
 
 # Test variables
 td:
