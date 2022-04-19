@@ -4,15 +4,15 @@ This collection of roles is able to customise VM's based on their environment, r
 It aims to replicate the workflow of hiera using the idea of a "common" (```for Global configuration```), "role" (```for a server role like web or DB```) and "environment" (```for prod/pre-prod & UAT```) setup with seperate variables for each section. You can add more as required.
 
 ## The workflow
-The idea behind this is to identify three area's of configuration for our node.
+This diagram visualises the steps that Ansible is running as it goes through the VM customisation workflow.
 
 ![Alt text](images/workflow.png?raw=true)
 
-  * "common" configuration, users, ssh_keys, filesystems, NFS mounts, etc.
+  * "common" configuration is applied first. So users, ssh_keys, filesystems, NFS mounts, etc.
   * Next we identify the "role" specific configuration including application packages, users, ssh_keys, NFS mounts, ulimits, kernel settings, etc
   * Finally, we take the "environment" specific configuration and apply that.
 
-All of the above need to work with all environment levels from test, AT and production.
+All of the above needs to work with all environment levels from test, AT and production.
 
 ## Quick Start
 Follow these steps to setup your environment like mine.
