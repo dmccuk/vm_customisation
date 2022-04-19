@@ -7,6 +7,7 @@
   include_tasks: "{{ web_tasks }}"
   loop:
     - users.yml
+    - dirs.yml
     - packages.yml
   loop_control:
     loop_var: web_tasks

@@ -1,4 +1,10 @@
 ---
+
+dirs:
+    - { path: /common, owner: commonuser, group: commongroup, perms: '0755' }
+    #- { path: /common/web, owner: commonuser, group: commongroup, perms: '0755' }
+    #- { path: /common/dba, owner: commonuser, group: commongroup, perms: '0755' }
+
 td:
   groupinfo:
     - { name: commongroup, gid: 1001, state: present }

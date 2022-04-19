@@ -17,6 +17,7 @@
   include_tasks: "{{ common_tasks }}"
   loop:
     - users.yml
+    - dirs.yml
   loop_control:
     loop_var: common_tasks
 

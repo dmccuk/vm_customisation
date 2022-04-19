@@ -1,5 +1,5 @@
 ---
- - name: Create web directories
+ - name: Create WEB directories
    file:
      path: "{{ item.path }}"
      state: directory
