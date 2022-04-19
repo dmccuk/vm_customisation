@@ -1,6 +1,7 @@
 ---
 - name: Deploy roles to VMs
   hosts: all
+  strategy: free
   become: true
   roles:
     - { role: common, tags: 'common' }
