@@ -18,3 +18,13 @@ prod:
 
   users:
     - { name: commonuser, uid: 2001, group: commongroup, shell: /bin/bash }
+
+# My real code add the following:
+# - VG/LV/FS creation
+# - NFS mounts for each role & environment
+# - service account SSH keys
+# - Cron users
+# - Specific applications depending on the role of the server
+# - Kernel parameter and ulimits
+# - full directory structure, permissions and ownership
+# - As well as OS specific tasks covering RHEL[6,7,8]

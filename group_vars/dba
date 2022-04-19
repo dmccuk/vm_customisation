@@ -11,6 +11,10 @@ t_dirs:
     - { path: /data/TEST, owner: dbauser, group: dbagroup, perms: '0755' }
     - { path: /data/TEST/IN, owner: dbauser, group: dbagroup, perms: '0777' }
 
+p_dirs:
+    - { path: /data/PROD, owner: dbauser, group: dbagroup, perms: '0755' }
+    - { path: /data/PROD/IN, owner: dbauser, group: dbagroup, perms: '0777' }
+
 ulimits:
     - { domain: dbauser, type: soft, item: nofile, value: 65536 }
     - { domain: dbauser, type: hard, item: nofile, value: 65536 }
