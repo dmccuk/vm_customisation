@@ -21,7 +21,7 @@ Follow these steps to setup your environment like mine.
   * ```cd vm_customisation```
   * Update your hosts/inventory file with the servers you want to run against
   * Make sure your ansible.cfg is setup with your own personal requirements
-  * run ansible against your servers: ```ansible-playbook -i hosts.ini deploy.yml```
+  * run ansible against your servers: ```ansible-playbook -i hosts.ini vm_customisation.yml```
 
 If you don't have SSH-KEYS, or you need to provide a password to elivate your access, make sure to add one or all of the following: ```-kbK```
 
