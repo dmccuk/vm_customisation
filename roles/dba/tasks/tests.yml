@@ -1,0 +1,9 @@
+---
+    - name: Check if the right packages are installed
+      package_facts:
+        manager: "auto"
+
+    - name: confirm package is installed
+      assert:
+        that: "'mariadb' in ansible_facts.packages"
+      ignore_errors: true

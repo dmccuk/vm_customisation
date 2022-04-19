@@ -11,6 +11,7 @@
     - packages.yml
     - dirs.yml
     - limits.yml
+    - tests.yml
   loop_control:
     loop_var: dba_tasks
 

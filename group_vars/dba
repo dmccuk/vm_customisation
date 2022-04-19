@@ -1,7 +1,7 @@
 ---
 # Apply to all
 packages:
-    - mysql
+    - mariadb
 
 dirs:
     - { path: /data, owner: root, group: root, perms: '0755' }
